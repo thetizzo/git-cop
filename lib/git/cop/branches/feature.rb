@@ -29,7 +29,7 @@ module Git
 
         def load_environment
           if key? "CIRCLECI" then Environments::CircleCI.new
-          elsif netlify? then Environments::NetlifyCI.new environment: current_environment
+          elsif key? "NETLIFY" then Environments::NetlifyCI.new environment: current_environment
           elsif key? "TRAVIS" then Environments::TravisCI.new environment: current_environment
           else Environments::Local.new
           end
@@ -37,13 +37,6 @@ module Git
 
         def key? key
           current_environment[key] == "true"
-        end
-
-        # TODO: Temporary workaround until this pull request is rebased onto `master`:
-        # https://github.com/netlify/build-image/pull/297. Once fixed, we'll be able to use
-        # `key?("NETLIFY") instead.
-        def netlify?
-          String(current_environment["DEPLOY_URL"]).include?("netlify")
         end
       end
     end

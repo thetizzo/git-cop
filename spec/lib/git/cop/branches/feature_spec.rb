@@ -37,6 +37,7 @@ RSpec.describe Git::Cop::Branches::Feature do
       let :environment do
         {
           "CIRCLECI" => "true",
+          "NETLIFY" => "false",
           "TRAVIS" => "false"
         }
       end
@@ -53,7 +54,7 @@ RSpec.describe Git::Cop::Branches::Feature do
       let :environment do
         {
           "CIRCLECI" => "false",
-          "DEPLOY_URL" => "http://www.example.com/netlify/path",
+          "NETLIFY" => "true",
           "HEAD" => "test",
           "TRAVIS" => "false"
         }
@@ -71,6 +72,7 @@ RSpec.describe Git::Cop::Branches::Feature do
       let :environment do
         {
           "CIRCLECI" => "false",
+          "NETLIFY" => "false",
           "TRAVIS" => "true",
           "TRAVIS_PULL_REQUEST_BRANCH" => "test"
         }
