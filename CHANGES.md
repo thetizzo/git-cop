@@ -1,3 +1,16 @@
+# 3.5.0 (2019-06-01)
+
+- Fixed RSpec/ContextWording issues.
+- Fixed Rubocop Naming/RescuedExceptionsVariableName issues.
+- Added style guide for lines of code in a pull request.
+- Updated Netlify feature branch detection.
+- Updated contributing documentation.
+- Updated to Reek 5.4.0.
+- Updated to Rubocop 0.69.0.
+- Updated to Rubocop Performance 1.3.0.
+- Updated to Rubocop RSpec 1.33.0.
+- Updated to Runcom 5.0.0.
+
 # 3.4.2 (2019-05-01)
 
 - Updated RSpec helper examples file name.
