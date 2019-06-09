@@ -8,13 +8,8 @@ require "git/cop"
 
 SimpleCov.start
 
-Dir[Bundler.root.join("spec", "support", "shared_contexts", "**", "*.rb")].each do |file|
-  require file
-end
-
-Dir[Bundler.root.join("spec", "support", "shared_examples", "**", "*.rb")].each do |file|
-  require file
-end
+Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].each(&method(:require))
+Dir[File.join(__dir__, "support", "shared_examples", "**/*.rb")].each(&method(:require))
 
 # Ensure CI environments are disabled for local testing purposes.
 ENV["CIRCLECI"] = "false"
