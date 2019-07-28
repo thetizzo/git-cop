@@ -11,13 +11,9 @@ RSpec.describe Git::Cop::Rake::Tasks do
   before { Rake::Task.clear }
 
   describe ".setup" do
-    let(:tasks) { instance_spy described_class }
-
-    before { allow(described_class).to receive(:new).and_return(tasks) }
-
     it "installs rake tasks" do
       described_class.setup
-      expect(tasks).to have_received(:install)
+      expect(Rake::Task.tasks.map(&:name)).to contain_exactly("git_cop")
     end
   end
 

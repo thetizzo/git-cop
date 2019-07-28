@@ -182,7 +182,7 @@ RSpec.describe Git::Cop::Styles::CommitBodyPhrase do
       ]
 
       defaults.each do |phrase|
-        it %(it answers false for "#{phrase}") do
+        it %(answers false for "#{phrase}") do
           status = instance_double Process::Status, success?: true
           shell = class_spy Open3, capture2e: ["", status]
           commit = object_double Git::Cop::Commits::Saved.new(sha: "1", shell: shell),
