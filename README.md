@@ -91,7 +91,7 @@ history.
 
 ## Screencasts
 
-[![asciicast](https://asciinema.org/a/131420.png)](https://asciinema.org/a/131420)
+[![asciicast](https://asciinema.org/a/263063.svg)](https://asciinema.org/a/263063)
 
 ## Requirements
 
