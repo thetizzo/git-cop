@@ -37,15 +37,15 @@ module Git
       end
 
       def total_warnings
-        collection.values.flatten.select(&:warning?).size
+        collection.values.flatten.count(&:warning?)
       end
 
       def total_errors
-        collection.values.flatten.select(&:error?).size
+        collection.values.flatten.count(&:error?)
       end
 
       def total_issues
-        collection.values.flatten.select(&:invalid?).size
+        collection.values.flatten.count(&:invalid?)
       end
 
       def total_commits
