@@ -932,6 +932,8 @@ worth considering:
   - :bulb: - Indicates a helpful tip or trick for improving the code. This can be *blocking* or
     *non-blocking* feedback and is left up to the author to decide (generally, it is a good idea to
     address and resolve the feedback).
+  - :bow: - Indicates thankfulness of the feedback received. This is *non-blocking* and always meant
+    as a response to helpful feedback.
   - :white_check_mark: - Signifies approval of pull request. The author can rebase onto `master` and
     delete the feature branch at this point.
 - Use face-to-face communication if a pull request's written discussion gets lengthy/noisy.
