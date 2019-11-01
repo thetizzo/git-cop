@@ -13,7 +13,7 @@ module Git
       end
 
       def self.version
-        "3.5.2"
+        "3.5.3"
       end
 
       def self.version_label
