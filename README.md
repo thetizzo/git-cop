@@ -666,17 +666,28 @@ Automatically ignores *fixup!* or *squash!* commit prefixes when calculating sub
 |---------|----------|-----------------------|
 | true    | error    | includes: (see below) |
 
-Ensures the commit subject uses consistent prefixes that help explain *what* is being commited. The
-include list *is* case sensitive. The default include list consists of the following prefixes:
+Ensures the commit subject uses consistent prefixes that explain *what* is being commited. The
+`includes` are *case sensitive* and default to the following prefixes:
 
-- *Fixed* - Existing code that has been fixed.
-- *Removed* - Code that was once added and is now removed.
-- *Added* - New code that is an enhancement, feature, etc.
-- *Updated* - Existing code that has been modified.
-- *Refactored* - Existing code that has been cleaned up and does not change functionality.
+- **Fixed** - Identifies what was fixed. The commit should be as small as possible and consist of
+  changes to implementation and spec only. In some cases this might be a single line or file change.
+  The important point is the change is applied to existing code which corrects behavior that wasn't
+  properly implemented earlier.
+- **Removed** - Identifies what was removed. The commit should be as small as possible and consist
+  only of removed lines/files from the existing implementation. This might also mean breaking
+  changes requiring the publishing of a *major* version release in the future.
+- **Added** - Identifies what was added. The commit should be as small as possible and consist of
+  implementation and spec. Otherwise, it might be a change to an existing file which adds new
+  behavior.
+- **Updated** - Identifies what was updated. The commit should be as small as possible and *not add
+  or fix* existing behavior. This can sometimes be a grey area but is typically reserved for updates
+  to documentation, code comments, dependencies, etc.
+- **Refactored** - Identifies what was refactored. The commit should be as small as possible and only
+  improve existing functionality while avoiding changes in behavior (especially to public API
+  that might effect downstream dependencies). Refactored code should never break existing specs.
 
 In practice, using a prefix other than what has been detailed above to explain *what* is being
-committed is never needed. This include list is not only short and easy to remember but also has the
+committed is never needed. These prefixes are not only short and easy to remember but also have the
 added benefit of categorizing the commits for building release notes, change logs, etc. This becomes
 handy when coupled with another tool, [Milestoner](https://github.com/bkuhlmann/milestoner), for
 producing consistent project milestones and Git tag histories.
