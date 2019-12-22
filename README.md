@@ -42,7 +42,6 @@ debugable project history.
     - [Commit Author Capitalization](#commit-author-capitalization)
     - [Commit Author Email](#commit-author-email)
     - [Commit Author Name](#commit-author-name)
-    - [Commit Author Name Parts](#commit-author-name-parts)
     - [Commit Body Bullet](#commit-body-bullet)
     - [Commit Body Bullet Capitalization](#commit-body-bullet-capitalization)
     - [Commit Body Bullet Delimiter](#commit-body-bullet-delimiter)
@@ -123,10 +122,6 @@ The default configuration is:
     :commit_author_name:
       :enabled: true
       :severity: :error
-      :minimum: 2
-    :commit_author_name_parts:
-      :enabled: false
-      :severity: :warn
       :minimum: 2
     :commit_body_bullet:
       :enabled: true
@@ -461,23 +456,6 @@ too. This takes it a step further to ensure the email address loosely resembles 
 | Enabled | Severity |  Defaults  |
 |---------|----------|------------|
 | true    | error    | minimum: 2 |
-
-Ensures author name consists of, at least, a first and last name. Example:
-
-    # Disallowed
-    Kaylee
-
-    # Allowed
-    Kaywinnet Lee Frye
-
-### Commit Author Name Parts
-
-| Enabled | Severity |  Defaults  |
-|---------|----------|------------|
-| false   | warn     | minimum: 2 |
-
-:warning: **This has been deprecated and will be removed in 4.0.0. Use *Commit Author Name*
-instead.**
 
 Ensures author name consists of, at least, a first and last name. Example:
 
