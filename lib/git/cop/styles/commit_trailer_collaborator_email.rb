@@ -6,7 +6,7 @@ module Git
       class CommitTrailerCollaboratorEmail < Abstract
         def self.defaults
           {
-            enabled: false,
+            enabled: true,
             severity: :error
           }
         end

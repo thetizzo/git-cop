@@ -29,7 +29,7 @@ RSpec.describe Git::Cop::Styles::CommitTrailerCollaboratorCapitalization do
   describe ".defaults" do
     it "answers defaults" do
       expect(described_class.defaults).to eq(
-        enabled: false,
+        enabled: true,
         severity: :error
       )
     end

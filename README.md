@@ -212,21 +212,21 @@ The default configuration is:
       :includes:
         - "\\."
     :commit_trailer_collaborator_capitalization:
-      :enabled: false
+      :enabled: true
       :severity: :error
     :commit_trailer_collaborator_duplication:
-      :enabled: false
+      :enabled: true
       :severity: :error
     :commit_trailer_collaborator_email:
-      :enabled: false
+      :enabled: true
       :severity: :error
     :commit_trailer_collaborator_key:
-      :enabled: false
+      :enabled: true
       :severity: :error
       :includes:
         - "Co-Authored-By"
     :commit_trailer_collaborator_name:
-      :enabled: false
+      :enabled: true
       :severity: :error
       :minimum: 2
 

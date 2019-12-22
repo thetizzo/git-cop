@@ -6,7 +6,7 @@ module Git
       class CommitTrailerCollaboratorCapitalization < Abstract
         def self.defaults
           {
-            enabled: false,
+            enabled: true,
             severity: :error
           }
         end

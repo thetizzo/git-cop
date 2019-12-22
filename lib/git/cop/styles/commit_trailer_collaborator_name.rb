@@ -6,7 +6,7 @@ module Git
       class CommitTrailerCollaboratorName < Abstract
         def self.defaults
           {
-            enabled: false,
+            enabled: true,
             severity: :error,
             minimum: 2
           }
