@@ -42,7 +42,6 @@ debugable project history.
     - [Commit Author Capitalization](#commit-author-capitalization)
     - [Commit Author Email](#commit-author-email)
     - [Commit Author Name](#commit-author-name)
-    - [Commit Author Name Capitalization](#commit-author-name-capitalization)
     - [Commit Author Name Parts](#commit-author-name-parts)
     - [Commit Body Bullet](#commit-body-bullet)
     - [Commit Body Bullet Capitalization](#commit-body-bullet-capitalization)
@@ -125,9 +124,6 @@ The default configuration is:
       :enabled: true
       :severity: :error
       :minimum: 2
-    :commit_author_name_capitalization:
-      :enabled: false
-      :severity: :warn
     :commit_author_name_parts:
       :enabled: false
       :severity: :warn
@@ -473,25 +469,6 @@ Ensures author name consists of, at least, a first and last name. Example:
 
     # Allowed
     Kaywinnet Lee Frye
-
-### Commit Author Name Capitalization
-
-| Enabled | Severity | Defaults |
-|---------|----------|----------|
-| false   | warn     | none     |
-
-:warning: **This has been deprecated and will be removed in 4.0.0. Use *Commit Author
-Capitalization* instead.**
-
-Ensures auther name is properly capitalized. Example:
-
-    # Disallowed
-    jayne cobb
-    dr. simon tam
-
-    # Allowed
-    Jayne Cobb
-    Dr. Simon Tam
 
 ### Commit Author Name Parts
 
