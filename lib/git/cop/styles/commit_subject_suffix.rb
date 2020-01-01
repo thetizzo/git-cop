@@ -8,26 +8,30 @@ module Git
           {
             enabled: true,
             severity: :error,
-            includes: ["\\."]
+            excludes: [
+              "\\.",
+              "\\?",
+              "\\!"
+            ]
           }
         end
 
         def valid?
           return true if filter_list.empty?
 
-          commit.subject.match?(/#{Regexp.union filter_list.to_regexp}\Z/)
+          !commit.subject.match?(/#{Regexp.union filter_list.to_regexp}\Z/)
         end
 
         def issue
           return {} if valid?
 
-          {hint: %(Use: #{filter_list.to_hint}.)}
+          {hint: %(Avoid: #{filter_list.to_hint}.)}
         end
 
         protected
 
         def load_filter_list
-          Kit::FilterList.new settings.fetch(:includes)
+          Kit::FilterList.new settings.fetch(:excludes)
         end
       end
     end

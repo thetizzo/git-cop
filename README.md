@@ -209,8 +209,10 @@ The default configuration is:
     :commit_subject_suffix:
       :enabled: true
       :severity: :error
-      :includes:
+      :excludes:
         - "\\."
+        - "\\?"
+        - "\\!"
     :commit_trailer_collaborator_capitalization:
       :enabled: true
       :severity: :error
@@ -303,11 +305,11 @@ Here is an example workflow, using gem defaults with issues detected:
     # Output:
     Running Git Cop...
 
-    83dbad531d84a184e55cbb38c5b2a4e5fa5bcaee (Brooke Kuhlmann, 0 seconds ago): This is a bogus commit message that is also terribly long and will word wrap
+    83dbad531d84a184e55cbb38c5b2a4e5fa5bcaee (Brooke Kuhlmann, 0 seconds ago): This is a bogus commit message that is also terribly long and will word wrap.
       Commit Body Presence Warning. Use minimum of 1 line (non-empty).
       Commit Subject Length Error. Use 72 characters or less.
       Commit Subject Prefix Error. Use: /Fixed/, /Added/, /Updated/, /Removed/, /Refactored/.
-      Commit Subject Suffix Error. Use: /\./.
+      Commit Subject Suffix Error. Avoid: /\./, /\?/, /\!/.
 
     1 commit inspected. 4 issues detected (1 warning, 3 errors).
 
@@ -697,13 +699,12 @@ disturb interactive rebase workflows.
 
 ### Commit Subject Suffix
 
-| Enabled | Severity |       Defaults      |
-|---------|----------|---------------------|
-| true    | error    | includes: `["\\."]` |
+| Enabled | Severity |             Defaults              |
+|---------|----------|-----------------------------------|
+| true    | error    | excludes: `["\\.", "\\?", "\\!"]` |
 
-Ensures commit subjects are suffixed consistently. The include list *is* case sensitive and only
-allows for periods (`.`) to ensure each commit is sentance-like when generating release notes, Git
-tags, change logs, etc. This is handy when coupled with a tool, like
+Ensures commit subjects are suffixed consistently. The exclude list *is* case sensitive and prevents
+the use of punctionation. This is handy when coupled with a tool, like
 [Milestoner](https://github.com/bkuhlmann/milestoner), which automates project milestone releases.
 
 ### Commit Trailer Collaborator Capitalization

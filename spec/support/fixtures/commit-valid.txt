@@ -1,4 +1,4 @@
-Added example.
+Added example
 
 An example paragraph.
 

@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Git::Cop::Styles::CommitSubjectSuffix do
   subject(:cop) { described_class.new commit: commit, settings: settings }
 
-  let(:content) { "Added test subject." }
+  let(:content) { "Added test subject" }
   let(:status) { instance_double Process::Status, success?: true }
   let(:shell) { class_spy Open3, capture2e: ["", status] }
 
@@ -14,7 +14,7 @@ RSpec.describe Git::Cop::Styles::CommitSubjectSuffix do
   end
 
   let(:enabled) { true }
-  let(:settings) { {enabled: enabled, includes: ["\\.", "\\[✓\\]", "\\#skip"]} }
+  let(:settings) { {enabled: enabled, excludes: ["\\.", "\\?", "\\!"]} }
 
   describe ".id" do
     it "answers class ID" do
@@ -33,7 +33,7 @@ RSpec.describe Git::Cop::Styles::CommitSubjectSuffix do
       expect(described_class.defaults).to eq(
         enabled: true,
         severity: :error,
-        includes: ["\\."]
+        excludes: ["\\.", "\\?", "\\!"]
       )
     end
   end
@@ -53,8 +53,24 @@ RSpec.describe Git::Cop::Styles::CommitSubjectSuffix do
       end
     end
 
-    context "with invalid suffix" do
-      let(:content) { "Added bad subject" }
+    context "with period suffix" do
+      let(:content) { "Added bad subject." }
+
+      it "answers false" do
+        expect(cop.valid?).to eq(false)
+      end
+    end
+
+    context "with question suffix" do
+      let(:content) { "Added bad subject?" }
+
+      it "answers false" do
+        expect(cop.valid?).to eq(false)
+      end
+    end
+
+    context "with exclamation suffix" do
+      let(:content) { "Added bad subject!" }
 
       it "answers false" do
         expect(cop.valid?).to eq(false)
@@ -72,10 +88,10 @@ RSpec.describe Git::Cop::Styles::CommitSubjectSuffix do
     end
 
     context "when invalid" do
-      let(:content) { "Added bad subject" }
+      let(:content) { "Added bad subject?" }
 
       it "answers issue hint" do
-        expect(issue[:hint]).to eq("Use: /\\./, /\\[✓\\]/, /\\#skip/.")
+        expect(issue[:hint]).to eq("Avoid: /\\./, /\\?/, /\\!/.")
       end
     end
   end

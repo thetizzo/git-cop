@@ -10,7 +10,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
       commit_body_leading_line: {enabled: true, severity: :error},
       commit_subject_length: {enabled: true, severity: :error, length: 50},
       commit_subject_prefix: {enabled: true, severity: :error, includes: %w[Fixed Added]},
-      commit_subject_suffix: {enabled: true, severity: :error, includes: ["."]}
+      commit_subject_suffix: {enabled: true, severity: :error, excludes: ["\\.", "\\?", "\\!"]}
     }
   end
 
@@ -29,7 +29,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
     context "with valid commits" do
       it "reports no issues" do
         Dir.chdir git_repo_dir do
-          `git commit --no-verify --message "Added one.txt." --message "- For testing purposes."`
+          `git commit --no-verify --message "Added one.txt" --message "- For testing purposes"`
           collector = runner.run
 
           expect(collector.issues?).to eq(false)
@@ -40,7 +40,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
     context "with invalid commits" do
       it "reports issues" do
         Dir.chdir git_repo_dir do
-          `git commit --no-verify --message "Add one.txt." --message "- A test bullet."`
+          `git commit --no-verify --message "Add one.txt" --message "- A test bullet"`
           collector = runner.run
 
           expect(collector.issues?).to eq(true)
@@ -66,7 +66,7 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
 
       it "fails with errors" do
         Dir.chdir git_repo_dir do
-          `git commit --no-verify --message "Updated one.txt." --message "- A test bullet."`
+          `git commit --no-verify --message "Updated one.txt" --message "- A test bullet"`
           result = -> { runner.run }
 
           expect(&result).to raise_error(
