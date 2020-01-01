@@ -1,3 +1,25 @@
+# 4.0.0 (2020-01-01)
+
+- Fixed SimpleCov setup in RSpec spec helper.
+- Added gem console
+- Updated Pry development dependencies
+- Updated all Git commit trailer style cops to be enabled by default
+- Updated commit subject prefix documentation
+- Updated gem summary.
+- Updated to Refinments 7.0.0
+- Updated to Rubocop 0.77.0.
+- Updated to Rubocop 0.78.0.
+- Updated to Rubocop Performance 1.5.0.
+- Updated to Rubocop RSpec 1.37.0.
+- Updated to Rubocop Rake 0.5.0.
+- Updated to Ruby 2.7.0
+- Updated to Runcom 6.0.0
+- Updated to SimpleCov 0.17.0.
+- Removed Git commit author name capitalization style cop
+- Removed Git commit author name parts style cop
+- Removed commit subject suffix include list.
+- Removed unnecessary Bash script documentation
+
 # 3.5.3 (2019-11-01)
 
 - Fixed Rubocop Performance/Count issues.
