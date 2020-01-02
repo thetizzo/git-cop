@@ -20,7 +20,7 @@ RSpec.describe Git::Cop::Commits::Unsaved, :git_repo do
 
   describe "#raw_body" do
     let :raw_body do
-      "Added example.\n" \
+      "Added example\n" \
       "\n" \
       "An example paragraph.\n" \
       "\n" \
@@ -67,7 +67,7 @@ RSpec.describe Git::Cop::Commits::Unsaved, :git_repo do
 
   describe "#subject" do
     it "answers subject from file" do
-      expect(commit.subject).to eq("Added example.")
+      expect(commit.subject).to eq("Added example")
     end
 
     it "answers raw body when raw body is a single line" do
