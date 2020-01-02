@@ -22,9 +22,9 @@ RSpec.describe Git::Cop::CLI do
       before do
         Dir.chdir git_repo_dir do
           git_create_branch
-          `printf "%s\n" "Test content." > one.txt`
+          `printf "%s\n" "Test content" > one.txt`
           `git add --all .`
-          `git commit --no-verify --message "Added test file."`
+          `git commit --no-verify --message "Added test file"`
         end
       end
 
@@ -109,9 +109,9 @@ RSpec.describe Git::Cop::CLI do
       before do
         Dir.chdir git_repo_dir do
           git_create_branch
-          `printf "%s\n" "Test content." > one.txt`
+          `printf "%s\n" "Test content" > one.txt`
           `git add --all .`
-          `git commit --no-verify --message "Added a test commit." --message "A test body."`
+          `git commit --no-verify --message "Added a test commit" --message "A test body."`
         end
       end
 

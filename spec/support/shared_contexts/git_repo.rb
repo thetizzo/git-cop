@@ -19,7 +19,7 @@ RSpec.shared_context "with git repository", :git_repo do
       `git config core.hooksPath /dev/null`
       `git config remote.origin.url https://github.com/bkuhlmann/test.git`
       `git add --all .`
-      `git commit --all --message "Added dummy files."`
+      `git commit --all --message "Added dummy files"`
     end
 
     example.run
@@ -34,6 +34,6 @@ RSpec.shared_context "with git repository", :git_repo do
   def git_commit_file name
     `touch #{name}`
     `git add --all`
-    `git commit -m "Added #{name}."`
+    `git commit -m "Added #{name}"`
   end
 end
