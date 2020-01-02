@@ -1,3 +1,12 @@
+# 4.0.1 (2020-01-02)
+
+- Fixed commit suffix punctuation spec failures
+- Fixed loading of configuration file
+- Fixed severity error
+- Fixed unsaved commit failing spec.
+- Updated README project requirements.
+- Updated to Gemsmith 14.0.0
+
 # 4.0.0 (2020-01-01)
 
 - Fixed SimpleCov setup in RSpec spec helper.
