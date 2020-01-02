@@ -14,13 +14,16 @@ RSpec.describe Git::Cop::Runner, :temp_dir, :git_repo do
     }
   end
 
-  let(:configuration) { Runcom::Config.new Git::Cop::Identity.name, defaults: defaults }
+  let :configuration do
+    Runcom::Config.new "#{Git::Cop::Identity.name}/configuration.yml", defaults: defaults
+  end
+
   let(:branch) { "test" }
 
   before do
     Dir.chdir git_repo_dir do
       git_create_branch
-      `printf "%s\n" "Test content." > one.txt`
+      `printf "%s\n" "Test content" > one.txt`
       `git add --all .`
     end
   end
