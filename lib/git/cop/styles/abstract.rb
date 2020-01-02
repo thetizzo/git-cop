@@ -51,10 +51,9 @@ module Git
         end
 
         def severity
-          level = settings.fetch :severity
-          fail Errors::Severity, level: level unless LEVELS.include? level
-
-          level
+          settings.fetch(:severity).tap do |level|
+            fail Errors::Severity, level unless LEVELS.include? level
+          end
         end
 
         def valid?
