@@ -67,7 +67,7 @@ debugable project history.
     - [Tags](#tags)
     - [Rebases](#rebases)
     - [Hooks](#hooks)
-    - [Pull Requests](#pull-requests)
+    - [Code Reviews](#code-reviews)
     - [GitHub](#github)
   - [Tests](#tests)
   - [Versioning](#versioning)
@@ -396,11 +396,12 @@ Whenever a commit has been saved, this script will run Git Cop to check for issu
 
 ### Continuous Integration (CI)
 
-This gem automatically configures itself for known CI build servers.
+This gem automatically configures itself for known CI build servers (see below for details). If you
+have a build server that is not listed, please log an issue or provide an implementation with
+support.
 
 Calculation of commits is done by reviewing all commits made on the feature branch since branching
-from `master`. Below are the build servers which are supported and *tested*. If you have a build
-server that is not listed, please open a pull request with support.
+from `master`.
 
 #### Circle CI
 
@@ -540,10 +541,10 @@ Instead of linking to issues, take the time to write a short summary as to *why*
 made. Doing this will make it easier to understand *why* the commit was made, keeps the commit self-
 contained, and makes learning about/debugging the commit faster.
 
-Issue tracker links are best used at the pull request level due to an issue usually spanning
-multiple commits in order to complete the work. When reading a pull request, this is a great
-opportunity to link to an issue in order to provide a high level overview and reason why the pull
-request exists.
+Issue tracker links are best used at the code review level due to an issue usually spanning multiple
+commits in order to complete the work. When reading a code review, this is a great opportunity to
+link to an issue in order to provide a high level overview and reason why the code review was
+initiated in the first place.
 
 ### Commit Body Leading Line
 
@@ -788,21 +789,21 @@ worth considering:
 
 - Use a [Git rebase workflow](http://www.bitsnbites.eu/a-tidy-linear-git-history) instead of a Git
   merge workflow.
-- Use `git commit --fixup` when fixing a previous commit, addressing pull request feedback, etc.,
+- Use `git commit --fixup` when fixing a previous commit, addressing code review feedback, etc.,
   and don't need to modifiy the original commit message.
-- Use `git commit --squash` when fixing a previous commit, addressing pull request feedback, etc.,
+- Use `git commit --squash` when fixing a previous commit, addressing code review feedback, etc.,
   and want to combine multiple commit messages into a single commit message. *Avoid using squash to
   blindly combine multiple commit messages without editing them into a single, coherant message.*
 - Use `git rebase --interactive` when cleaning up commit history, order, messages, etc. This should
-  be done prior to submitting a pull request or when pull request feedback has been addressed and
+  be done prior to submitting a code review or when code review feedback has been addressed and
   you are ready to rebase onto `master`.
 - Use `git push --force-with-lease` instead of `git push --force` when pushing changes after an
   interactive rebasing session.
 - Avoid checking in development-specific configuration files (add to `.gitignore` instead).
 - Avoid checking in sensitive information (i.e. security keys, passphrases, etc).
-- Avoid "WIP" (a.k.a. "Work in Progress") commits and/or pull requests. Be confident with your code
-  and collegues' time. Use branches, stashes, etc. instead -- share a link to a feature branch diff
-  if you have questions/concerns during development.
+- Avoid "WIP" (a.k.a. "Work in Progress") commits and/or code review labels. Be confident with your
+  code and collegues' time. Use branches, stashes, etc. instead -- share a link to a feature branch
+  diff if you have questions/concerns during development.
 - Avoid using [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This practice
   leads to complicated project cloning, deployments, maintenance, etc. Use separate repositories to
   better organize and split out this work. Sophisticated package managers, like
@@ -862,33 +863,33 @@ worth considering:
   like editors or other tools one choose to do their work. For team consistency, use a continuous
   integration build server instead.
 
-### Pull Requests
+### Code Reviews
 
-- Keep pull requests short and easy to review:
-  - Provide a high level overview that answers *why* the pull request is necessary.
-  - Provide a link to the issue/task that prompted the pull request (if any).
+- Keep code reviews short and easy to review:
+  - Provide a high level overview that answers *why* the code review is necessary.
+  - Provide a link to the issue/task that prompted the code review (if any).
   - Provide screenshots/screencasts if possible.
-  - Ensure commits within the pull request are related to the purpose of the pull request.
-  - [Prefer pull requests with ~250 lines or less](https://is.gd/l5bcij) in order to keep the
+  - Ensure commits within the code review are related to the purpose of the code review.
+  - [Prefer code reviews with ~250 lines or less](https://is.gd/l5bcij) in order to keep the
     quality of the code review and defect detection high.
   - Avoid working on a large issue without getting feedback first in order to not overwhelm/surprise
     the maintainers. More discussion up front will help ensure your work has a higher chance of
     acceptance.
-- Review and rebase pull requests quickly:
+- Review and rebase code reviews quickly:
   - Maintain a consistent but reasonable pace -- Review morning, noon, and night.
-  - Avoid letting pull request linger more than a day. Otherwise, you risk hampering moral and
+  - Avoid letting code review linger more than a day. Otherwise, you risk hampering moral and
     diminishing the productivity of the team.
 - Use emojis to help identify the types of comments added during the review process:
   - Generally, an emoji should prefix all feedback. Format: `<emoji> <feedback>`.
-  - :tea: (`:tea:`) - Signifies you are reviewing the pull request. This is *non-blocking* and is
-    meant to be informational. Useful when reading over a pull request with a large number of
+  - :tea: (`:tea:`) - Signifies you are reviewing the code review. This is *non-blocking* and is
+    meant to be informational. Useful when reading over a code review with a large number of
     commits, reviewing complex code, requires additional testing by the reviewer, etc.
   - :star: (`:star:`) - Signifies code that is liked, favorited, remarkable, etc. This feedback is
     *non-blocking* and is always meant to be positive/uplifting.
   - :information_source: (`:information_source:`) - Signifies informational feedback that is
     *non-blocking*. Can also be used to let one know you are done reviewing but haven't approved yet
-    (due to feedback that needs addressing), rebasing a pull request and then merging, waiting for a
-    blocking pull request to be resolved, status updates to the pull request, etc.
+    (due to feedback that needs addressing), rebasing a code review and then merging, waiting for a
+    blocking code review to be resolved, status updates to the code review, etc.
   - :thought_balloon: (`:thought_balloon:`) - Signifies inquisitive intent that is *non-blocking*.
     Useful when asking questions and/or probing deeper into implementation details to learn more.
   - :abc: (`:abc:`) - Signifies detection of a mispelling with suggested correction. This is
@@ -901,14 +902,13 @@ worth considering:
     good idea to address and resolve the feedback).
   - :bow: (`:bow:`) - Indicates thankfulness of the feedback received. This is *non-blocking* and
     always meant as a response to helpful feedback.
-  - :white_check_mark: (`:white_check_mark:`) - Signifies approval of pull request. The author can
-    rebase onto `master` and delete the feature branch at this point.
-- Use face-to-face communication if a pull request's written discussion gets lengthy/noisy.
+  - :white_check_mark: (`:white_check_mark:`) - Signifies approval of the code review. The author
+    can rebase onto `master` and delete the feature branch at this point.
+- Use face-to-face communication if a code review's written discussion gets lengthy/noisy.
 - Create new tasks/actions if additional features are discovered during a code review to avoid
-  delaying the finishing of the code review. Return to reviewing the pull request afterwards once
-  the tasks have been logged.
+  delaying the finishing of the code review. Return to the code review once tasks have been logged.
 - The author, not the reviewer, should rebase the feature branch onto `master` upon approval.
-- Avoid reviewing your own pull request before rebasing onto `master`. Have another pair of eyes
+- Avoid reviewing your own code review before rebasing onto `master`. Have another pair of eyes
   review your code first.
 - Ensure the following criteria is met before rebasing your feature branch to `master`:
   - Ensure all `fixup!` and `squash!` commits are interactively rebased. *Avoid rebasing these onto
@@ -922,7 +922,7 @@ worth considering:
 When using GitHub, enforce a rebase workflow for all of your GitHub projects (*highly recommended*).
 You can do this via your project options (i.e.
 `https://github.com/<username/organization>/<project>/settings`) and editing your merge options for
-pull requests as follows:
+code reviews as follows:
 
 ![GitHub Merge Options](doc/github-settings-options.png)
 
