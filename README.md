@@ -865,25 +865,35 @@ worth considering:
 
 ### Code Reviews
 
+There are two objectives each code review should achieve:
+
+1. **Quality**: Ensures changes are of highest quality that adhere to team standards while enhancing
+   the customer experience and not disrupting their workflow.
+1. **Education**: Provides a chance for everyone on the team to learn more about the architecture,
+   product/service, and how each member of the team implements a solution. This is your chance to
+   ask questions and learn how to be a better engineer so take advantage of it.
+
+In addition to the objectives above, the following guidelines are worth following:
+
 - Keep code reviews short and easy to review:
   - Provide a high level overview that answers *why* the code review is necessary.
   - Provide a link to the issue/task that prompted the code review (if any).
   - Provide screenshots/screencasts if possible.
   - Ensure commits within the code review are related to the purpose of the code review.
-  - [Prefer code reviews with ~250 lines or less](https://is.gd/l5bcij) in order to keep the
-    quality of the code review and defect detection high.
+  - Prefer code reviews of ~250 lines in order to keep the quality of the code review and defect
+    detection high.
   - Avoid working on a large issue without getting feedback first in order to not overwhelm/surprise
-    the maintainers. More discussion up front will help ensure your work has a higher chance of
+    the maintainers. More discussion up front will help ensure your work has a faster chance of
     acceptance.
 - Review and rebase code reviews quickly:
   - Maintain a consistent but reasonable pace -- Review morning, noon, and night.
-  - Avoid letting code review linger more than a day. Otherwise, you risk hampering moral and
+  - Avoid letting code reviews linger more than a day. Otherwise, you risk hampering moral and
     diminishing the productivity of the team.
-- Use emojis to help identify the types of comments added during the review process:
-  - Generally, an emoji should prefix all feedback. Format: `<emoji> <feedback>`.
-  - :tea: (`:tea:`) - Signifies you are reviewing the code review. This is *non-blocking* and is
-    meant to be informational. Useful when reading over a code review with a large number of
-    commits, reviewing complex code, requires additional testing by the reviewer, etc.
+- Use emojis, with a format of `<emoji> <feedback>`, to identify the kinds of feedback used during
+  the review process:
+  - :tea: (`:tea:`) - Signifies you are starting the code review. This is *non-blocking* and
+    informational. Useful when reading over a code review with a large number of commits, complex
+    code, requires additional testing by the reviewer, etc.
   - :star: (`:star:`) - Signifies code that is liked, favorited, remarkable, etc. This feedback is
     *non-blocking* and is always meant to be positive/uplifting.
   - :information_source: (`:information_source:`) - Signifies informational feedback that is
@@ -895,18 +905,26 @@ worth considering:
   - :abc: (`:abc:`) - Signifies detection of a mispelling with suggested correction. This is
     *blocking* feedback that is easy to correct.
   - :art: (`:art:`) - Signifies an issue with code style and/or code quality. This can be *blocking*
-    or *non-blocking* feedback but is feedback generally related to the style/quality of the code,
-    implementation details, and/or alternate solutions worth considering.
+    or *non-blocking* feedback. It is up to the discretion of the author on how to address the
+    feedback but encouraged that the feedback is incorporated or at least discussed. Generally,
+    these situations are automatically detected via code linters but there are occassions where
+    there is ambiguity in which linters can't catch.
+  - :classical_building: (`:classical_building:`) - Signifies an issue with the architecture of the
+    implementation. This is *blocking* and requires immediate correction. The reviewer should
+    provide a suggested solution and/or links to patterns, articles, etc. that might help the author
+    fix the implemnetation. Pairing is encouraged if feedback is vast and/or complex.
+  - :closed_lock_with_key: (`:closed_lock_with_key:`) - Signifies a security violation that would
+    damage us and/or our customers. This is *blocking* feedback and must be addressed immediately.
   - :bulb: (`:bulb:`) - Indicates a helpful tip or trick for improving the code. This can be
-    *blocking* or *non-blocking* feedback and is left up to the author to decide (generally, it is a
-    good idea to address and resolve the feedback).
+    *blocking* or *non-blocking* feedback and is left up to the author to decide. Generally, it is a
+    good idea to address and resolve the feedback.
   - :bow: (`:bow:`) - Indicates thankfulness of the feedback received. This is *non-blocking* and
     always meant as a response to helpful feedback.
-  - :white_check_mark: (`:white_check_mark:`) - Signifies approval of the code review. The author
-    can rebase onto `master` and delete the feature branch at this point.
+  - :white_check_mark: (`:white_check_mark:`) - Signifies code review approval. The author can
+    rebase onto `master` and delete the feature branch at this point.
 - Use face-to-face communication if a code review's written discussion gets lengthy/noisy.
 - Create new tasks/actions if additional features are discovered during a code review to avoid
-  delaying the finishing of the code review. Return to the code review once tasks have been logged.
+  delaying code review acceptance. Return to the code review once tasks have been logged.
 - The author, not the reviewer, should rebase the feature branch onto `master` upon approval.
 - Avoid reviewing your own code review before rebasing onto `master`. Have another pair of eyes
   review your code first.
