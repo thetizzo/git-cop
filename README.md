@@ -13,7 +13,7 @@
 [![Netlify CI Status](https://api.netlify.com/api/v1/badges/d4a15c9c-46ba-49db-9f31-33f389ee3259/deploy-status)](https://app.netlify.com/sites/git-cop/deploys)
 
 A command line interface for linting Git commits. Ensures you maintain a clean, easy to read, and
-debugable project history.
+debuggable project history.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
@@ -429,7 +429,7 @@ your project.
 |---------|----------|----------|
 | true    | error    | none     |
 
-Ensures auther name is properly capitalized. Example:
+Ensures author name is properly capitalized. Example:
 
     # Disallowed
     jayne cobb
@@ -506,7 +506,7 @@ Ensures commit body bullet lines are capitalized. Example:
 |---------|----------|---------------------|
 | true    | error    | includes: `["\\-"]` |
 
-Ensures commit body bullets are delmited by a space. Example:
+Ensures commit body bullets are delimited by a space. Example:
 
     # Disallowed
 
@@ -525,7 +525,7 @@ Ensures commit body bullets are delmited by a space. Example:
 Ensures commit body doesn't contain a link to an issue tracker. The exclude list defaults to GitHub
 Issue links but can be customized for any issue tracker.
 
-There are several reasons for exluding issue tracker links from commit bodies:
+There are several reasons for excluding issue tracker links from commit bodies:
 
 1. Not all issue trackers preserve issues (meaning they can be deleted). This makes make reading
    historic commits much harder to understand why the change was made when the link no longer works.
@@ -553,7 +553,7 @@ initiated in the first place.
 | true    | error    | none     |
 
 Ensures there is a leading, empty line, between the commit subject and body. Generally, this isn't
-an issue but sometimes the Git CLI can be misued or a misconfigured Git editor will smash the
+an issue but sometimes the Git CLI can be misused or a misconfigured Git editor will smash the
 subject line and start of the body as one run-on paragraph. Example:
 
     # Disallowed
@@ -580,7 +580,7 @@ subject line and start of the body as one run-on paragraph. Example:
 | true    | error    | length: 72 |
 
 Ensures each line of the commit body is no longer than 72 characters in length for consistent
-readabilty and word-wrap prevention on smaller screen sizes. For further details, read Tim Pope's
+readability and word-wrap prevention on smaller screen sizes. For further details, read Tim Pope's
 original [article](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) on the
 subject.
 
@@ -608,7 +608,7 @@ Ensures each paragraph of the commit body is capitalized. Example:
 
 Ensures non-descriptive words/phrases are avoided in order to keep commit message bodies informative
 and specific. The exclude list is case insensitive. Detection of excluded words/phrases is case
-insensitve as well. Example:
+insensitive as well. Example:
 
     # Disallowed
 
@@ -618,7 +618,7 @@ insensitve as well. Example:
 
     # Allowed
 
-    Necessary to fix due to a bug detected in production. The included implentation fixes the bug
+    Necessary to fix due to a bug detected in production. The included implementation fixes the bug
     and provides the missing spec to ensure this doesn't happen again.
 
 ### Commit Body Presence
@@ -669,7 +669,7 @@ Automatically ignores *fixup!* or *squash!* commit prefixes when calculating sub
 |---------|----------|-----------------------|
 | true    | error    | includes: (see below) |
 
-Ensures the commit subject uses consistent prefixes that explain *what* is being commited. The
+Ensures the commit subject uses consistent prefixes that explain *what* is being committed. The
 `includes` are *case sensitive* and default to the following prefixes:
 
 - **Fixed** - Identifies what was fixed. The commit should be as small as possible and consist of
@@ -705,7 +705,7 @@ disturb interactive rebase workflows.
 | true    | error    | excludes: `["\\.", "\\?", "\\!"]` |
 
 Ensures commit subjects are suffixed consistently. The exclude list *is* case sensitive and prevents
-the use of punctionation. This is handy when coupled with a tool, like
+the use of punctuation. This is handy when coupled with a tool, like
 [Milestoner](https://github.com/bkuhlmann/milestoner), which automates project milestone releases.
 
 ### Commit Trailer Collaborator Capitalization
@@ -790,10 +790,10 @@ worth considering:
 - Use a [Git rebase workflow](http://www.bitsnbites.eu/a-tidy-linear-git-history) instead of a Git
   merge workflow.
 - Use `git commit --fixup` when fixing a previous commit, addressing code review feedback, etc.,
-  and don't need to modifiy the original commit message.
+  and don't need to modify the original commit message.
 - Use `git commit --squash` when fixing a previous commit, addressing code review feedback, etc.,
   and want to combine multiple commit messages into a single commit message. *Avoid using squash to
-  blindly combine multiple commit messages without editing them into a single, coherant message.*
+  blindly combine multiple commit messages without editing them into a single, coherent message.*
 - Use `git rebase --interactive` when cleaning up commit history, order, messages, etc. This should
   be done prior to submitting a code review or when code review feedback has been addressed and
   you are ready to rebase onto `master`.
@@ -802,7 +802,7 @@ worth considering:
 - Avoid checking in development-specific configuration files (add to `.gitignore` instead).
 - Avoid checking in sensitive information (i.e. security keys, passphrases, etc).
 - Avoid "WIP" (a.k.a. "Work in Progress") commits and/or code review labels. Be confident with your
-  code and collegues' time. Use branches, stashes, etc. instead -- share a link to a feature branch
+  code and colleagues' time. Use branches, stashes, etc. instead -- share a link to a feature branch
   diff if you have questions/concerns during development.
 - Avoid using [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This practice
   leads to complicated project cloning, deployments, maintenance, etc. Use separate repositories to
@@ -827,7 +827,7 @@ worth considering:
   - Each commit should tell a story and be a logical building block to the next commit.
   - Each commit, when reviewed in order, should be able to explain *how* the feature or bug fix was
     completed and implemented properly.
-- Use a commit subject that explains *what* is being commited.
+- Use a commit subject that explains *what* is being committed.
 - Use a commit message body that explains *why* the commit is necessary. Additional considerations:
   - If the commit has a dependency to the previous commit or is a precursor to the commit that will
     follow, make sure to explain that.
@@ -847,7 +847,7 @@ worth considering:
 
 ### Rebases
 
-- Avoid rebasing a shared branch. If you must do this, clear communcation should be used to warn
+- Avoid rebasing a shared branch. If you must do this, clear communication should be used to warn
   those ahead of time, ensure that all of their work is checked in, and that their local branch is
   deleted first.
 
@@ -902,17 +902,17 @@ In addition to the objectives above, the following guidelines are worth followin
     blocking code review to be resolved, status updates to the code review, etc.
   - :thought_balloon: (`:thought_balloon:`) - Signifies inquisitive intent that is *non-blocking*.
     Useful when asking questions and/or probing deeper into implementation details to learn more.
-  - :abc: (`:abc:`) - Signifies detection of a mispelling with suggested correction. This is
+  - :abc: (`:abc:`) - Signifies detection of a misspelling with suggested correction. This is
     *blocking* feedback that is easy to correct.
   - :art: (`:art:`) - Signifies an issue with code style and/or code quality. This can be *blocking*
     or *non-blocking* feedback. It is up to the discretion of the author on how to address the
     feedback but encouraged that the feedback is incorporated or at least discussed. Generally,
-    these situations are automatically detected via code linters but there are occassions where
+    these situations are automatically detected via code linters but there are occasions where
     there is ambiguity in which linters can't catch.
   - :classical_building: (`:classical_building:`) - Signifies an issue with the architecture of the
     implementation. This is *blocking* and requires immediate correction. The reviewer should
     provide a suggested solution and/or links to patterns, articles, etc. that might help the author
-    fix the implemnetation. Pairing is encouraged if feedback is vast and/or complex.
+    fix the implementation. Pairing is encouraged if feedback is vast and/or complex.
   - :closed_lock_with_key: (`:closed_lock_with_key:`) - Signifies a security violation that would
     damage us and/or our customers. This is *blocking* feedback and must be addressed immediately.
   - :bulb: (`:bulb:`) - Indicates a helpful tip or trick for improving the code. This can be
